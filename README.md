@@ -3,6 +3,12 @@ MagTag Space weather display
 
 Data source to investigate  https://services.swpc.noaa.gov/
 
+K index use: https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json
+Flux: https://services.swpc.noaa.gov/products/10cm-flux-30-day.json
+Alerts: https://services.swpc.noaa.gov/products/alerts.json
+A Index; https://services.swpc.noaa.gov/json/predicted_fredericksburg_a_index.json
+sunspo number: https://services.swpc.noaa.gov/json/solar-cycle/observed-solar-cycle-indices.json
+
 Reading https://www.qrparci.org/resource/FDIM81.pdf to gain a bit more knowledge.
 
 * K index 
