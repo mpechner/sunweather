@@ -1,5 +1,27 @@
-# sunweather
-MagTag Space weather display
+# MagTag Space weather display
+A fairly simple Magtag app that grabs Space Weather from NOAA.
+## ToDo
+* Find the data source for sunspot number.
+* get some graphic or display space weather alerts.
+* flash neo pixels Green for good weather, red for bad.
+## Library requirements
+* adafruit_bitmap_font
+* adafruit_display_text
+* adafruit_fakerequests
+* adafruit_io
+* adafruit_magtag
+* adafruit_requests
+* neopixel
+* simpleio
+## Secrets.py
+Do not check in secrets.py.  Just place at the top level of the project with code.py.
+```python
+secrets = {
+   "ssid":"SSID",
+    "password":"passwd"
+}
+```
+## Data Sources
 
 Data source to investigate  https://services.swpc.noaa.gov/
 
@@ -13,12 +35,14 @@ A Index; https://services.swpc.noaa.gov/json/predicted_fredericksburg_a_index.js
 
 sunspot number: https://services.swpc.noaa.gov/json/solar-cycle/observed-solar-cycle-indices.json
 
+## Interpreting the data
 Reading https://www.qrparci.org/resource/FDIM81.pdf to gain a bit more knowledge.
 
 * K index 
   * 0-9 published every 3 hours with a 24 window
   * Magnetometers on the earth measure the condition of our magnetic field. The amount of movement (or, “wiggling”) is averaged and reported by NOAA
 * A index 
+  * 0-20 is a good number
   * 0-400 representing the overall planetary geomagnetic conditions for the UTC day
 
 K index
