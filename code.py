@@ -52,7 +52,7 @@ magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
 magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
     text_position=(200, 15),
     is_data=False,
-    text = "Sunspot:" + str(100)
+    text = "Sunspot:" + str('???')
 
 )
 
