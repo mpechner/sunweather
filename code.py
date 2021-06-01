@@ -1,8 +1,24 @@
 import json
 from adafruit_magtag.magtag import MagTag
 from secrets import secrets
+from time import sleep
+
 
 magtag = MagTag()
+
+
+if magtag.peripherals.battery < 3.3:
+    for ii in range(0, 10) :
+        magtag.peripherals.play_tone(3000, 1.0)
+        sleep(1)
+    magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
+        text_position=(40, 60),
+        is_data=False,
+        text_scale=3,
+        text = "BATTERY LOW"
+    )
+    magtag.exit_and_deep_sleep(7200)
+
 
 k_url = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
 flux_url = "https://services.swpc.noaa.gov/products/10cm-flux-30-day.json"
@@ -26,25 +42,26 @@ magtag.url = a_url
 a_value = json.loads(magtag.fetch())[0]['afred_1_day']
 print(a_value)
 
+
 magtag.url = sunspot_url
 sunspot_value = magtag.fetch().split()[4]
-print(sunspot_value)
+print(sunspot_value.split())
 
-magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
+magtag.add_text(
     text_position=(5, 15),
     is_data=False,
-    text = "K Index:" + str(k_value)
+    text="K Index:" + str(k_value)
 )
-magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
+magtag.add_text(
     text_position=(70, 15),
     is_data=False,
-    text = "A Index:" + str(a_value)
+    text="A Index:" + str(a_value)
 )
 
-magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
+magtag.add_text(
     text_position=(140, 15),
     is_data=False,
-    text = "Flux:" + str(flux_value)
+    text="Flux:" + str(flux_value)
 
 )
 
@@ -54,6 +71,7 @@ magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
     text = "Sunspot:" + sunspot_value
 
 )
+
 
 print("flux ", type(flux_value))
 print("k ", type(k_value))
@@ -72,4 +90,5 @@ else:
         text_scale=2,
         text = "sigh, get work done"
         )
+
 magtag.exit_and_deep_sleep(14400)
