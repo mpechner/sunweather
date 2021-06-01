@@ -4,6 +4,10 @@ A fairly simple Magtag app that grabs Space Weather from NOAA.
 ## ToDo
 * get some graphic or display space weather alerts.
 * flash neo pixels Green for good weather, red for bad.
+* Add Time to display
+* Investigate the buttons waking up magtag.  btn 1 display weather.  btn 2 show space weather events in last fiew days.
+* Btn 3 my Call sign and Name read from secrets.py
+* program so it will try both my home wifi and my phone as a hotspot.
 ## Library requirements
 * adafruit_bitmap_font
 * adafruit_display_text
