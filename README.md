@@ -1,7 +1,6 @@
 # MagTag Space weather display
 A fairly simple Magtag app that grabs Space Weather from NOAA.
 ## ToDo
-* Find the data source for sunspot number.
 * get some graphic or display space weather alerts.
 * flash neo pixels Green for good weather, red for bad.
 ## Library requirements
@@ -33,7 +32,7 @@ Alerts: https://services.swpc.noaa.gov/products/alerts.json
 
 A Index; https://services.swpc.noaa.gov/json/predicted_fredericksburg_a_index.json
 
-sunspot number: https://services.swpc.noaa.gov/json/solar-cycle/observed-solar-cycle-indices.json
+sunspot number: http://www.sidc.be/silso/DATA/EISN/EISN_current.txt
 
 ## Interpreting the data
 Reading https://www.qrparci.org/resource/FDIM81.pdf to gain a bit more knowledge.

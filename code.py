@@ -8,7 +8,7 @@ k_url = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
 flux_url = "https://services.swpc.noaa.gov/products/10cm-flux-30-day.json"
 alerts_url = "https://services.swpc.noaa.gov/products/alerts.json"
 a_url = "https://services.swpc.noaa.gov/json/predicted_fredericksburg_a_index.json"
-sunspot_url = "https://services.swpc.noaa.gov/json/solar-cycle/observed-solar-cycle-indices.json"
+sunspot_url = "http://www.sidc.be/silso/DATA/EISN/EISN_current.txt"
 
 magtag.url = k_url
 k_value = json.loads(magtag.fetch())[-1:][0][1]
@@ -26,10 +26,9 @@ magtag.url = a_url
 a_value = json.loads(magtag.fetch())[0]['afred_1_day']
 print(a_value)
 
-
-# magtag.url = sunspot_url
-# sunspot_value = json.loads(magtag.fetch())
-# print(sunspot_value)
+magtag.url = sunspot_url
+sunspot_value = magtag.fetch().split()[4]
+print(sunspot_value)
 
 magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
     text_position=(5, 15),
@@ -52,7 +51,7 @@ magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
 magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
     text_position=(200, 15),
     is_data=False,
-    text = "Sunspot:" + str('???')
+    text = "Sunspot:" + sunspot_value
 
 )
 
