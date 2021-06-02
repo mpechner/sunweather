@@ -105,7 +105,7 @@ if magtag.peripherals.battery < 3.3:
     magtag.exit_and_deep_sleep(7200)
 
 if alarm.wake_alarm and alarm.wake_alarm.pin == board.BUTTON_D:
-        show_events()
+    show_events()
 else:
     show_weather()
 
