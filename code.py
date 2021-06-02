@@ -4,6 +4,7 @@ from secrets import secrets
 from time import sleep
 from gc import collect
 import alarm
+from alarm.pin import PinAlarm
 import time
 import board
 
@@ -30,7 +31,6 @@ def show_events():
     alerts_url = "https://services.swpc.noaa.gov/products/alerts.json"
     magtag.url = alerts_url
     alerts_value = json.loads(magtag.fetch())[0]
-    print(alerts_value)
 
     magtag.add_text(
         text_position=(5, 5),
@@ -96,7 +96,7 @@ if magtag.peripherals.battery < 3.3:
     for ii in range(0, 10) :
         magtag.peripherals.play_tone(3000, 1.0)
         sleep(1)
-    magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
+    magtag.add_text(
         text_position=(40, 60),
         is_data=False,
         text_scale=3,
@@ -104,7 +104,7 @@ if magtag.peripherals.battery < 3.3:
     )
     magtag.exit_and_deep_sleep(7200)
 
-if alarm.wake_alarm and alarm.wake_alarm.pin == board.BUTTON_D:
+if isinstance(alarm.wake_alarm, PinAlarm) and alarm.wake_alarm.pin == board.BUTTON_D:
     show_events()
 else:
     show_weather()
