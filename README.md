@@ -1,6 +1,6 @@
 # MagTag Space weather display
 A fairly simple Magtag app that grabs Space Weather from NOAA.
-![Good Weather](https://github.com/mpechner/sunweather/blob/bac27f5e9f7cc1100982c971dc1584c8c336a01d/goodweather.jpg)
+![Good Weather](https://github.com/mpechner/sunweather/blob/fc4e25f51ec372b5decef6b9592917a9939fe0f5/goodweather.jpg)
 ## ToDo
 * get some graphic or display space weather alerts.
 * flash neo pixels Green for good weather, red for bad.
