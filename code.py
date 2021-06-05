@@ -28,8 +28,10 @@ def deep_sleep():
     magtag.add_text(# text_font="/fonts/Lato-Bold-ltd-25.bdf",
         text_position=(1, 121),
         is_data=False,
-        text = last_line
+        text=last_line
+
     )
+
     alarms.append(alarm.time.TimeAlarm(monotonic_time = time.monotonic() + 14400))
     alarm.exit_and_deep_sleep_until_alarms(*alarms)
 
@@ -39,9 +41,9 @@ def clear_display():
     #time.sleep(1.0)
     #magtag.graphics.display.refresh()
 
-
+line_nu = 0
 def disp_event(alltxt, which, text_color=0x000000):
-
+    global line_nu
     clear_display()
 
     if which < 0:
@@ -76,9 +78,10 @@ def disp_event(alltxt, which, text_color=0x000000):
         text_wrap=50,
         text_maxlen=len(foo),
         line_spacing=0.8,
-        text_color=text_color,
-        text=foo + '   '
+        text_color=text_color
+
     )
+    magtag.set_text(foo + '   ', index = 0, auto_refresh=False)
 
     last_line = "Exit     Previous          Next"
     magtag.add_text(
@@ -100,14 +103,17 @@ def show_events():
         time.sleep(0.2)
         if magtag.peripherals.button_a_pressed:
             disp_event(alerts_value, which - 1, text_color=0xFFFFFF)
+            magtag.set_text(' ', index=0, auto_refresh=False)
+            magtag.set_text(' ', index=1)
+            magtag._text = []
             show_weather()
             deep_sleep()
             return
         elif magtag.peripherals.button_b_pressed:
-            disp_event(alerts_value, which - 1, text_color=0xFFFFFF)
+            #disp_event(alerts_value, which - 1, text_color=0xFFFFFF)
             which = disp_event(alerts_value, which - 2)
         elif magtag.peripherals.button_c_pressed:
-            disp_event(alerts_value, which - 1 , text_color=0xFFFFFF)
+            #disp_event(alerts_value, which - 1 , text_color=0xFFFFFF)
             which = disp_event(alerts_value, which)
 
 
@@ -129,32 +135,33 @@ def show_weather():
 
     magtag.add_text(
         text_position=(5, 10),
-        is_data=False,
-        text="UTC:" + str(time_value)
+        is_data=False
+
     )
+    magtag.set_text("UTC:" + str(time_value), index = 0, auto_refresh=False)
 
     data_str = "K Index:%s  A Index:%s  Flux:%s  Sun Spot:%s" %(k_value, a_value, flux_value, sunspot_value)
 
     magtag.add_text(
         text_position=(5, 25),
-        is_data=False,
-        text=data_str
+        is_data=False
     )
+    magtag.set_text(data_str, index = 1, auto_refresh=False)
 
     if int(flux_value) > 74 and int(k_value) <=5:
         magtag.add_text(
             text_position=(5, 56),
             is_data=False,
-            text_scale=2,
-            text = "W00T! Get on the radio"
+            text_scale=2
             )
+        magtag.set_text("W00T! Get on the radio", index=2, auto_refresh=False)
     else:
         magtag.add_text(
             text_position=(20, 56),
             is_data=False,
-            text_scale=2,
-            text = "sigh, get work done"
+            text_scale=2
         )
+        magtag.set_text("sigh, get work done", index=2, auto_refresh=False)
 
 
 buttons = [board.BUTTON_A, board.BUTTON_D]
