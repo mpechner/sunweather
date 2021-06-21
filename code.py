@@ -116,6 +116,13 @@ def show_events():
             #disp_event(alerts_value, which - 1 , text_color=0xFFFFFF)
             which = disp_event(alerts_value, which)
 
+def flashit(fillset):
+    for ii in range(0,4):
+        magtag.peripherals.neopixels.fill(fillset)
+        time.sleep(.25)
+        magtag.peripherals.neopixels.fill((0,0,0))
+        time.sleep(.25)
+
 
 def show_weather():
     magtag.url = time_url
@@ -154,6 +161,9 @@ def show_weather():
             is_data=False,
             text_scale=2
             )
+
+
+        flashit((0,128,0))
         magtag.set_text("W00T! Get on the radio", index=2, auto_refresh=False)
     else:
         magtag.add_text(
@@ -161,6 +171,8 @@ def show_weather():
             is_data=False,
             text_scale=2
         )
+
+        flashit((128,0,0))
         magtag.set_text("sigh, get work done", index=2, auto_refresh=False)
 
 
