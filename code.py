@@ -131,7 +131,7 @@ def show_weather():
     a_value = str(json.loads(magtag.fetch())[0]['afred_1_day'])
 
     magtag.url = sunspot_url
-    sunspot_value = magtag.fetch().split()[4]
+    sunspot_value = magtag.fetch().split()[-4]
 
     magtag.add_text(
         text_position=(5, 10),
