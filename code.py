@@ -12,8 +12,8 @@ import displayio
 # from adafruit_epd.epd import Adafruit_EPD
 # from adafruit_epd.il0373 import Adafruit_IL0373
 
-print(dir(displayio.EPaperDisplay))
-print(dir(board.EPD_RESET))
+#print(dir(displayio.EPaperDisplay))
+#print(dir(board.EPD_RESET))
 
 k_url = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
 flux_url = "https://services.swpc.noaa.gov/products/10cm-flux-30-day.json"
@@ -47,8 +47,8 @@ def disp_event(alltxt, which, text_color=0x000000):
     clear_display()
 
     if which < 0:
-        which = 0
-    if which > len(alltxt):
+        which = len(alltxt) -1
+    elif which >= len(alltxt):
         which = 0
 
     #bitmap = displayio.Bitmap(board.DISPLAY.width, board.DISPLAY.height, 2)
@@ -70,7 +70,7 @@ def disp_event(alltxt, which, text_color=0x000000):
     foo = re.sub("Original Issue Time", "Orig Tm", foo)
 
 
-    print("SUB",foo, len(foo))
+    #print("SUB",foo, len(foo))
 
     magtag.add_text(
         text_position=(5, 50),
