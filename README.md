@@ -2,8 +2,7 @@
 A fairly simple Magtag app that grabs Space Weather from NOAA.
 ![Good Weather](https://github.com/mpechner/sunweather/blob/fc4e25f51ec372b5decef6b9592917a9939fe0f5/goodweather.jpg)
 ## ToDo
-* get some graphic or display space weather alerts.
-* flash neo pixels Green for good weather, red for bad.
+* get some graphic or display space weather alerts - not doing.
 * program so it will try both my home wifi and my phone as a hotspot.
 ## Library requirements
 * adafruit_bitmap_font
